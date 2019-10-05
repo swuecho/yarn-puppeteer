@@ -1,19 +1,19 @@
-ARG NODE_VERSION
-FROM node:$NODE_VERSION-alpine
+FROM alpine:edge
 
 # Installs latest Chromium (76) package.
-# - freetype and harfbuzz needed for node:9.11.1-alpine
-RUN apk update && apk upgrade && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/community >> /etc/apk/repositories && \
-    echo @edge http://nl.alpinelinux.org/alpine/edge/main >> /etc/apk/repositories && \
-    apk add --no-cache \
-      chromium@edge \
-      nss@edge \
-      freetype@edge \
-      harfbuzz@edge \
-      git
-
 # Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
+
+RUN apk add --no-cache \
+  chromium \
+  nss \
+  freetype \
+  freetype-dev \
+  harfbuzz \
+  ca-certificates \
+  ttf-freefont \
+  nodejs \
+  yarn 
+
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 ENV JEST_PUPPETEER_CONFIG jest-puppeteer.config.ci.js
 ENV CI true
