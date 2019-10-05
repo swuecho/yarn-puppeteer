@@ -1,5 +1,5 @@
 ARG NODE_VERSION
-FROM node:$NODE_VERSION-alpine
+FROM alpine:edge
 
 # Installs latest Chromium (76) package.
 # - freetype and harfbuzz needed for node:9.11.1-alpine
