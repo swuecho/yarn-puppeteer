@@ -20,4 +20,4 @@ images:
 - 'gcr.io/$PROJECT_ID/yarn-puppeteer:current'
 - 'gcr.io/$PROJECT_ID/nodejs/yarn-puppeteer'
 
-tags: ['cloud-builders-community']
+tags: ['yarn-puppeteer']
