@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:3.10.2
 
 # Installs latest Chromium (76) package.
 # Tell Puppeteer to skip installing Chrome. We'll be using the installed package.
