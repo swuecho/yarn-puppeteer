@@ -10,9 +10,6 @@ steps:
   - '.'
 
 images:
-- 'gcr.io/$PROJECT_ID/yarn-puppeteer:node-12.1.0'
 - 'gcr.io/$PROJECT_ID/yarn-puppeteer:latest'
-- 'gcr.io/$PROJECT_ID/yarn-puppeteer:current'
-- 'gcr.io/$PROJECT_ID/nodejs/yarn-puppeteer'
 
 tags: ['yarn-puppeteer']
