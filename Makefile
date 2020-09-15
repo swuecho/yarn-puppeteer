@@ -15,3 +15,7 @@ push_to_local:
 push_to_aliyun:
 	docker tag  $(local_registry)/$(image):$(version) $(aliyun_registry_bestqa)/$(image):$(version)
 	docker push $(aliyun_registry_bestqa)/$(image):$(version)
+
+push_to_github:
+	docker tag  $(local_registry)/$(image):$(version) $(github_pkg_registry_surveyresearch)/$(image):$(version)
+	docker push $(github_pkg_registry_surveyresearch)/$(image):$(version)
