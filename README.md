@@ -1,17 +1,37 @@
-# Tool builder: `gcr.io/$PROJECT_ID/yarn-puppeteer`
-
-This Container Builder build step runs the `yarn` tool but with the necessary dependencies for [puppeteer](https://github.com/GoogleChrome/puppeteer).
-
-It uses the small alpine-node base.
-
 ## Usage
 
-### With Jest
+## config jest-puppeteer
 
-This builder expects a `jest-puppeteer.config.ci.js` in the project root. Take a look at the example [jest-puppeteer.config.ci.js](examples/hello_world/jest-puppeteer.config.ci.js) that configures puppeteer to launch a headless chromium browser.
+the image expects a `jest-puppeteer.config.ci.js` in the test folder. 
 
-## Building and publishing this builder
+```js
+module.exports = {
+  launch: {
+    headless: true,
+    executablePath: '/usr/bin/chromium-browser',
+    slowMo: 100 // slow down by 100ms
+  },
+};
 
-To build and publish this builder, run the following command in this directory.
+```
 
-    $ gcloud builds submit . --config=cloudbuild.yaml
+## docker-compose
+
+```yaml
+yarn-puppeteer:
+    container_name: "yarn-puppeteer"
+    image: "${docker_registry}/yarn-puppeteer:latest"
+    volumes:
+    - ./puppeteer_tests:/puppeteer_tests
+```
+
+### run 
+
+```sh
+docker-compose run yarn-puppeteer --cwd /puppeteer_tests install
+docker-compose run yarn-puppeteer --cwd /puppeteer_tests test:puppeteer
+```
+
+`--cwd /puppeteer_tests` is required, because the test folder is `/puppeteer_tests`. 
+set the `workdir` to  `/puppeteer_tests` should also works.
+
