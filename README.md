@@ -1,4 +1,6 @@
-# Yarn and Chromium 
+# Yarn and Chromium Docker Image
+
+yarn-puppeteer is for history reason. puppeteeter is installed later by config in package.json
 
 ## Usage
 
