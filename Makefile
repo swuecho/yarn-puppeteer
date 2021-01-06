@@ -1,6 +1,7 @@
 local_registry=192.168.0.100:5555
 aliyun_registry_bestqa=registry.cn-shanghai.aliyuncs.com/bestqa
 github_pkg_registry_surveyresearch=docker.pkg.github.com/swuecho/surveyresearch
+dockerhub=echowuhao
 image=yarn-puppeteer
 version=latest
 
@@ -18,3 +19,7 @@ push_to_aliyun:
 push_to_github:
 	docker tag  $(local_registry)/$(image):$(version) $(github_pkg_registry_surveyresearch)/$(image):$(version)
 	docker push $(github_pkg_registry_surveyresearch)/$(image):$(version)
+
+push_to_dockerhub:
+	docker tag  $(local_registry)/$(image):$(version) $(dockerhub)/$(image):$(version)
+	docker push $(dockerhub)/$(image):$(version)
